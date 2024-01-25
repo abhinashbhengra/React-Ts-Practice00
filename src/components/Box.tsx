@@ -1,26 +1,21 @@
-import { Dispatch, SetStateAction } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../App";
 
-type InputValueType = string | number;
+const Box = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
-const Box = <T extends InputValueType>({
-  label,
-  value,
-  setValue,
-}: {
-  label: string;
-  value: T;
-  setValue: Dispatch<SetStateAction<T>>;
-}) => {
   return (
-    <form>
-      <label>{label}</label>
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value as T)}
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <div
+        style={{
+          backgroundColor: theme === "dark" ? "rgb(40,40,40)" : "white",
+          color: theme === "dark" ? "white" : "black",
+        }}
+      >
+        <h1>Box 1</h1>
+        <button onClick={toggleTheme}>Change Theme</button>
+      </div>
+    </>
   );
 };
 
