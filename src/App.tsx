@@ -9,6 +9,7 @@ function App() {
   const dispatch = useDispatch();
 
   const incrementByValueHandler = () => {
+    setValue(0);
     dispatch(incrementByValue(value));
   };
 
